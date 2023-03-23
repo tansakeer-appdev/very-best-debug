@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
+
   def create
+
     auth_id = params.fetch("query_author_id")
    if (User.where({ :id => auth_id }).at(0) != nil)
     comm = Comment.new
@@ -9,7 +11,8 @@ class CommentsController < ApplicationController
     comm.save
       redirect_to("/venues/#{comm.venue_id}")
     else
-      render plain:"check ya user id bruh"
+      render plain:"check ya user/author id bruh"
     end
+    
   end
 end

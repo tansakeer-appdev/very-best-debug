@@ -39,7 +39,7 @@
 
   <dt>Delete venue</dt>
   <dd>
-    <a href="/delete_venue/<% @the_venue.id %>">
+    <a href="/delete_venue/<%= @the_venue.id %>">
       Delete this venue
     </a>
   </dd>
@@ -53,12 +53,12 @@
     <th>Comment</th>
     <th>Posted</th>
   </tr>
-    
+    <% if @the_venue.comments.at(0) != nil %>
   <% @the_venue.comments.each do |comment| %>
-  <tr>
-    <td>
-      <%= comment.commenter.username %>
-    </td>
+       
+   <tr>
+    
+    <td> <%= comment.commenter.username %> </td>
 
     <td>
       <%= comment.body %>
@@ -68,8 +68,10 @@
       <%= comment.created_at %>
     </td>
   </tr>
-  
   <% end %>
+  <% else %>
+  <p> No New comments for this new locations</p>
+<% end %>
 </table>
 
 <h3>Add a new comment</h3>
